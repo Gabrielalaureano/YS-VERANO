@@ -23,7 +23,11 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="maio.php">Maiôs</a>
                 <a class="dropdown-item" href="biquini.php">Biquínis</a>
+<<<<<<< Updated upstream
                 <a class="dropdown-item" href="divercos.php">Diverços</a>
+=======
+                <a class="dropdown-item" href="divercos.php">Diversos</a>
+>>>>>>> Stashed changes
         
               </div>
             </li>
@@ -55,7 +59,11 @@
     </nav>
 
 
+<<<<<<< Updated upstream
     <!-- Modal -->
+=======
+    <!-- Modal login -->
+>>>>>>> Stashed changes
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

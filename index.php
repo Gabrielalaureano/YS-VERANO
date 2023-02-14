@@ -38,6 +38,7 @@ require_once 'menu.php';
 </wrap>
 
 <!--linkando imagens das estampas-->
+<<<<<<< Updated upstream
 <div class="text-center estampas">
 <h1 id=estampa>ESTAMPAS</h1>
 </div>
@@ -45,6 +46,13 @@ require_once 'menu.php';
 <div class="text-center colorido">
 <a href="#">
 <!--link 1--> <a href="#"> <img class="stamp" src="img\lisa-estampa.png" width="160" height="155"></a> <!--link 4--><a href="#"><img class="stamp" src="img\lisa-estampa.png" width="160" height="155"></a><!--link quatro--><!--link 4--><a href="#"><img class="stamp" src="img\lisa-estampa.png" width="160" height="155"></a><!--link 5-->
+=======
+
+
+<div class="text-center colorido">
+<a href="#">
+<!--link 1--> <a href="#"> <img class="stamp" src="img\1.png" width="160" height="155"></a> <!--link 4--><a href="#"><img class="stamp" src="img\2.png" width="160" height="155"></a><!--link quatro--><!--link 4--><a href="#"><img class="stamp" src="img\lisa-estampa.png" width="160" height="155"></a><!--link 5-->
+>>>>>>> Stashed changes
 <!--link 4--><a href="#"><img class="stamp" src="img\lisa-estampa.png" width="160" height="155"></a></div>
 
 

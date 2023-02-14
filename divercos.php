@@ -44,7 +44,11 @@ require_once 'menu.php';
         <a  href="#" class="btn btn-dark">Adicionar ao Carrinho</a>
       </div>
       </div>
+<<<<<<< Updated upstream
       <p>bronzeadores</p></div>
+=======
+      <p>cangas</p></div>
+>>>>>>> Stashed changes
 
 
       <!--cads biquinis-->
@@ -80,6 +84,39 @@ require_once 'menu.php';
       <p>bronzeadores</p></div>
 
   <!--fechamento Bronzeador-->
+<<<<<<< Updated upstream
+=======
+  <!--cads biquinis-->
+  <div class="row">
+      <div class="card preto">
+        <img class="image" src="img\canga01.jpg" alt="money" />        
+        <h2>Canga Turquesa.
+        </h2>
+        <p>R$ 95,00</p>
+        <p>Em até 3x de R$66,66 sem juros</p>
+        <a  href="#" class="btn btn-dark">Adicionar ao Carrinho</a>
+      </div>
+ 
+      <div class="card vermelho">
+     
+        <img class="image ver" src="img\canga02.jpg" alt="settings" />
+        <h2>Canga Pink Baby.
+        </h2>
+        <p>R$150,00</p>
+        <p>Em até 3x de R$66,66 sem juros</p>
+        <a  href="#" class="btn btn-dark">Adicionar ao Carrinho</a>
+      </div>
+ 
+     <div class="card terceiro">
+        <img class="image" src="img\canga03.jpg" alt="article" />
+        <h2>Canga Tropical.
+        </h2>
+        <p>R$ 250,00</p>
+        <p>Em até 3x de R$66,66 sem juros</p>
+        <a  href="#" class="btn btn-dark">Adicionar ao Carrinho</a>
+      </div>
+      </div>
+>>>>>>> Stashed changes
 
 
 <?php

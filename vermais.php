@@ -2,6 +2,7 @@
 require_once 'head.php';
 require_once 'menu.php';
 ?>
+<<<<<<< Updated upstream
 
         <table>
             <tr>
@@ -12,6 +13,11 @@ Phasellus bibendum aliquet erat, ut ornare purus malesuada et.</td>
   </tr>
         </table>
      
+=======
+<div class="textleft">
+<h1> Rastreio </h1>
+</div>
+>>>>>>> Stashed changes
 
 
 

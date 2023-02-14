@@ -30,10 +30,23 @@ if (!empty($dadoslogin['btnlogin'])) {
             if(password_verify($dadoslogin['senha'], $resposta['senha'])){
                 
                 $_SESSION['nome'] = $resposta['nome'];
+<<<<<<< Updated upstream
                 header("Location: administrativo.php");
 
             }
             else{
+=======
+                if( $_SESSION["carrinho"]==true){ $_SESSION['ID_CLIENTE'] = $resposta['ID_CLIENTE'];
+                
+                header("Location: frmcarrinho.php");
+            }
+            else{
+            header("Location: administrativo.php");
+        }
+
+    }
+            else{
+>>>>>>> Stashed changes
                 $_SESSION['msg'] = "Erro: Usuário ou senha inválida!";
           
             }
