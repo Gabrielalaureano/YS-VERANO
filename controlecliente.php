@@ -86,8 +86,6 @@ if (!$vazio) {
     $salvar->bindParam(':NOME', $dadoscad['NOME'], PDO::PARAM_STR);
     $salvar->bindParam(':DATANASC', $dadoscad['DATANASC'], PDO::PARAM_STR);
     $salvar->bindParam(':CPF', $dadoscad['CPF'], PDO::PARAM_STR);
-    $salvar->bindParam(':RG', $dadoscad['RG'], PDO::PARAM_STR);
-    $salvar->bindParam(':SEXO', $dadoscad['SEXO'], PDO::PARAM_STR);
     $salvar->bindParam(':TELEFONE', $dadoscad['SEXO'], PDO::PARAM_STR);
     $salvar->bindParam(':EMAIL', $dadoscad['EMAIL'], PDO::PARAM_STR);
     $salvar->bindParam(':CEP', $dadoscad['CEP'], PDO::PARAM_INT);

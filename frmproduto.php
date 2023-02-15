@@ -53,7 +53,14 @@
 
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="valor">Preço</label>
+                    <label for="valor">Preço Compra</label>
+                    <input type="text" class="form-control" name="custo" onchange="this.value = this.value.replace(/,/g, '.')">    
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="valor">Preço Venda</label>
                     <input type="text" class="form-control" name="valor" onchange="this.value = this.value.replace(/,/g, '.')">    
                 </div>
             </div>  
@@ -73,6 +80,36 @@
 
                         ?>
                         <option value="<?php echo $ID_CATEGORIA;?>"> <?php echo $DESCRICAO; ?> </option>
+                        
+                        <?php
+                                }
+                            }
+                            ?>
+
+                    </select>                    
+                </div>
+            </div> 
+
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="fornecedor">Fornecedor</label>
+                    <select name="fornecedor" class="form-control">
+
+                        <?php
+
+                            $sql2 = "SELECT * from fornecedor";
+                            $resultado2=$conn->prepare($sql2);
+                            $resultado2->execute();
+
+
+                            if (($resultado2) and ($resultado2->rowCount() != 0)) { 
+                                while ($linha2 = $resultado2->fetch(PDO::FETCH_ASSOC)) {
+
+                                    extract($linha2);
+
+
+                        ?>
+                        <option value="<?php echo $ID_FORNECEDOR;?>"> <?php echo $NOME; ?> </option>
                         
                         <?php
                                 }

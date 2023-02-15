@@ -44,11 +44,10 @@ require_once 'menu.php';
         <a  href="#" class="btn btn-dark">Adicionar ao Carrinho</a>
       </div>
       </div>
-<<<<<<< Updated upstream
+
       <p>bronzeadores</p></div>
-=======
+
       <p>cangas</p></div>
->>>>>>> Stashed changes
 
 
       <!--cads biquinis-->
@@ -84,8 +83,7 @@ require_once 'menu.php';
       <p>bronzeadores</p></div>
 
   <!--fechamento Bronzeador-->
-<<<<<<< Updated upstream
-=======
+
   <!--cads biquinis-->
   <div class="row">
       <div class="card preto">

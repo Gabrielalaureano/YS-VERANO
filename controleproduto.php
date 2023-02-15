@@ -1,5 +1,7 @@
-<?php
+<?php 
     include_once 'conexao.php';
+    
+
     
 
     if(isset($_SESSION['msg'])){
@@ -8,7 +10,7 @@
     }    
 
 
-    try{
+  try{
 
     $dadoscad = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -37,13 +39,14 @@
 
              if($salvaimg){
                  $path = $pasta . $novonome . "." . $extensao;
-                 echo "ok";
+                 echo $path;
              }
 
         }
 
 
     }
+
     if (!empty($dadoscad['btncad'])) {
 
         $vazio = false;
@@ -61,23 +64,23 @@
    
 }
 
+
 if (!$vazio) {
 
     
 
-    $sql = "insert into roupa(id_produtos,produto_nome,quantidade,tamanho,cor,custo,valor,fornecedor_id_fornecedor,foto)
-    values(:id_produto,:produto_nome,:quantidade,:tamanho,:cor,:custo,:valor,:fornecedor_id_fonecedor,:foto)";
+    $sql = "insert into roupa(PRODUTO_NOME,QUANTIDADE,TAMANHO,COR,CUSTO,VALOR,ID_FORNECEDOR,FOTO)
+    values(:PRODUTO_NOME,:QUANTIDADE,:TAMANHO,:COR,:CUSTO,:VALOR,:ID_FORNECEDOR,:FOTO))";
 
-    $salvar= $conn->prepare($sql);
-    $salvar->bindParam(':id_produto', $dadoscad['id_produto'], PDO::PARAM_STR);
-    $salvar->bindParam(':produto_nome', $dadoscad['produto_nome'], PDO::PARAM_STR);
-    $salvar->bindParam(':quantidade', $dadoscad['quantidade'], PDO::PARAM_STR);
-    $salvar->bindParam(':tamanho', $dadoscad['tamanho'], PDO::PARAM_STR);
-    $salvar->bindParam(':cor', $dadoscad['cor'], PDO::PARAM_STR);
-    $salvar->bindParam(':custo',$dadoscad['custo'], PDO::PARAM_STR);
-    $salvar->bindParam(':valor',$dadoscad['valor'] , PDO::PARAM_STR);
-    $salvar->bindParam(':fornecedor_id_fornecedor',$dadoscad['fornecedor_id_fornecedor'], PDO::PARAM_STR);
-    $salvar->bindParam(':foto',$path , PDO::PARAM_STR);
+    $salvar= $conn->prepare($sql);     
+    $salvar->bindParam(':PRODUTO_NOME', $dadoscad['nome'], PDO::PARAM_STR);
+    $salvar->bindParam(':QUANTIDADE', $dadoscad['quantidade'], PDO::PARAM_STR);
+    $salvar->bindParam(':TAMANHO', $dadoscad['tamanho'], PDO::PARAM_STR);
+    $salvar->bindParam(':COR', $dadoscad['cor'], PDO::PARAM_STR);
+    $salvar->bindParam(':CUSTO',$dadoscad['custo'], PDO::PARAM_STR);
+    $salvar->bindParam(':VALOR',$dadoscad['valor'] , PDO::PARAM_STR);
+    $salvar->bindParam(':ID_FORNECEDOR',$dadoscad['fornecedor'], PDO::PARAM_STR);
+    $salvar->bindParam(':FOTO', $path , PDO::PARAM_STR);
     $salvar->execute();
     if ($salvar->rowCount()) {
         

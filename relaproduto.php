@@ -56,12 +56,12 @@
 ?>        
             <tr>
               <td scope="row"><img src="<?php echo $foto ?>"style=widht:100px;height:100px;></td>
-              <td><?php echo $produto_nome ?></td>
-              <td><?php echo $custo ?></td> 
-              <td><?php echo $valor?></td><!--deveria ser valor?-->
-              <td><?php echo $quantidade ?></td>
-              <td><?php echo $cor ?></td>
-              <td><?php echo $tamanho ?></td>
+              <td><?php echo $PRODUTO_NOME ?></td>
+              <td><?php echo $CUSTO ?></td> 
+              <td><?php echo $VALOR ?></td><!--deveria ser valor?-->
+              <td><?php echo $QUANTIDADE ?></td>
+              <td><?php echo $COR ?></td>
+              <td><?php echo $TAMANHO ?></td>
               <td><?php echo $ID_CATEGORIA ?></td>
               <td>
                  <?php echo "<a href='editarprod.php?codigo=$id_roupa'>" ; ?>
@@ -92,7 +92,7 @@
 
 
      //Contar os registros no banco
-     $qtregistro = "SELECT COUNT(id_roupa) AS registros FROM roupa";
+     $qtregistro = "SELECT COUNT(ID_PRODUTO) AS registros FROM roupa";
      $resultado = $conn->prepare($qtregistro);
      $resultado->execute();
      $resposta = $resultado->fetch(PDO::FETCH_ASSOC);

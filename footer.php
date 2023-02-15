@@ -10,20 +10,12 @@
           <p><a href="blog.php">Blog</a></p>
          
         </div>
-
         <div class="col-md-3">
           <h4>Contato</h4>
     <p> <i class="fa-solid fa-phone"> </i>(21) 90000-0000 </p>
-
        <p> <i class="fa-solid fa-envelope"></i> ysverano@gmail.com</p>
-<<<<<<< Updated upstream
        <p><a href="polices.php"><i class="fa-solid fa-circle-question"></i>FAQ</a></p>
-=======
-        <p><a href="rastreio.php"><i class="fa-solid fa-truck"></i>Rastreio de encomendas</a></p>
-        <p><a href="polices.php"><i class="fa-solid fa-circle-question"></i>FAQ</a></p>
->>>>>>> Stashed changes
         </div>
-
         <div class="col-md-3">
           <h4>Funcionamento Loja Física</h4>
           <p>Segunda à Sábado -10:00 às 23:00</p>
@@ -41,10 +33,6 @@
           <a href="#"><i class="fa-brands fa-instagram"></i></a>
           <a href="#"><i class="fa-brands fa-facebook"></i></a>
           <a href="#"> <i class="fa-brands fa-whatsapp"></i></a>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         </div>
       </div>
      

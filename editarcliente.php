@@ -68,13 +68,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-              <div class="form-group">
-                 <label for="sexo">Sexo</label>
-                 <p><input type="radio" name="sexo" checked value="F"> Feminino           
-                  <input type="radio" name="sexo" value="M"> Masculino
-                </div>
-            </div>
+    
 
             <div class="col-md-2">        
               <div class="form-group">            
@@ -97,13 +91,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg"
-                    value="<?php echo $RG;?>"                    
-                    >
-                </div>
+          
             </div>
 
             <div class="col-md-6">
