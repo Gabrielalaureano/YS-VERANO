@@ -13,7 +13,7 @@ require_once 'menu.php';
     try{
 
     $dadoscad = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
+var_dump($dadoscad);
 
 
     if(isset($_FILES['foto'])){
@@ -22,7 +22,7 @@ require_once 'menu.php';
 
         if($arquivo['error']){
             echo 'Erro ao carregar arquivo';
-            header ("Location: frmaluno.php");
+            header ("Location: frmcliente.php");
         }
 
         $pasta = "foto/";
@@ -74,26 +74,24 @@ require_once 'menu.php';
 
 if (!$vazio) {
 
-
+$status = "A";
     $senha = password_hash($dadoscad['senha'], PASSWORD_DEFAULT);
 
-    $sql = "insert into cliente(NOME,DATANASC,CPF,
-    RG,SEXO,TELEFONE,EMAIL,CEP,NUMEROCASA,COMPLEMENTO,SENHA,FOTO,STATUS)
-    values(:ID_CLIENTE,:NOME,:DATANASC,:CPF,
-    :RG,:SEXO,:TELEFONE,:EMAIL,:CEP,:NUMEROCASA,:COMPLEMENTO,:SENHA,:FOTO,:STATUS)";
+    $sql = "insert into cliente(NOME,DATANASC,CPF,TELEFONE,EMAIL,CEP,NUMEROCASA,COMPLEMENTO,SENHA,FOTO,STATUS)
+    values(:NOME,:DATANASC,:CPF,:TELEFONE,:EMAIL,:CEP,:NUMEROCASA,:COMPLEMENTO,:SENHA,:FOTO,:STATUS)";
 
     $salvar= $conn->prepare($sql);
-    $salvar->bindParam(':NOME', $dadoscad['NOME'], PDO::PARAM_STR);
-    $salvar->bindParam(':DATANASC', $dadoscad['DATANASC'], PDO::PARAM_STR);
-    $salvar->bindParam(':CPF', $dadoscad['CPF'], PDO::PARAM_STR);
-    $salvar->bindParam(':TELEFONE', $dadoscad['SEXO'], PDO::PARAM_STR);
-    $salvar->bindParam(':EMAIL', $dadoscad['EMAIL'], PDO::PARAM_STR);
-    $salvar->bindParam(':CEP', $dadoscad['CEP'], PDO::PARAM_INT);
-    $salvar->bindParam(':NUMEROCASA', $dadoscad['NUMEROCASA'], PDO::PARAM_STR);
-    $salvar->bindParam(':COMPLEMENTO', $dadoscad['COMPLEMENTO'], PDO::PARAM_STR);
+    $salvar->bindParam(':NOME', $dadoscad['nome'], PDO::PARAM_STR);
+    $salvar->bindParam(':DATANASC', $dadoscad['dn'], PDO::PARAM_STR);
+    $salvar->bindParam(':CPF', $dadoscad['cpf'], PDO::PARAM_STR);
+    $salvar->bindParam(':TELEFONE', $dadoscad['telefone'], PDO::PARAM_STR);
+    $salvar->bindParam(':EMAIL', $dadoscad['email'], PDO::PARAM_STR);
+    $salvar->bindParam(':CEP', $dadoscad['cep'], PDO::PARAM_INT);
+    $salvar->bindParam(':NUMEROCASA', $dadoscad['numero'], PDO::PARAM_STR);
+    $salvar->bindParam(':COMPLEMENTO', $dadoscad['complemento'], PDO::PARAM_STR);
     $salvar->bindParam(':SENHA', $senha, PDO::PARAM_STR);
     $salvar->bindParam(':FOTO',  $path, PDO::PARAM_STR);
-    $salvar->bindParam(':STATUS', $dadoscad['STATUS'], PDO::PARAM_STR);
+    $salvar->bindParam(':STATUS',$status, PDO::PARAM_STR);
 
     $salvar->execute();
 
@@ -133,15 +131,13 @@ if (!empty($dadoscad['btneditar'])) {
         
     }
 
-    $sql = "UPDATE cliente set NOME=:NOME,DATANASC=:DATANASC,CPF=:CPF,RG=:RG,SEXO=:SEXO,TELEFONE=:TELEFONE,EMAIL=:EMAIL,CEP=:CEP,NUMEROCASA=:NUMEROCASA,
+    $sql = "UPDATE cliente set NOME=:NOME,DATANASC=:DATANASC,CPF=:CPF,TELEFONE=:TELEFONE,EMAIL=:EMAIL,CEP=:CEP,NUMEROCASA=:NUMEROCASA,
   COMPLEMENTO=:COMPLEMENTO,FOTO=:FOTO, WHERE ID_CLIENTE = :ID_CLIENTE";
 
     $salvar= $conn->prepare($sql);
     $salvar->bindParam(':NOME', $dadoscad['NOME'], PDO::PARAM_STR);
     $salvar->bindParam(':DATANASC', $dadoscad['DATANASC'], PDO::PARAM_STR);
     $salvar->bindParam(':CPF', $dadoscad['CPF'], PDO::PARAM_STR);
-    $salvar->bindParam(':RG', $dadoscad['RG'], PDO::PARAM_STR);
-    $salvar->bindParam(':SEXO', $dadoscad['SEXO'], PDO::PARAM_STR);
     $salvar->bindParam(':TELEFONE', $dadoscad['TELEFONE'], PDO::PARAM_STR);
     $salvar->bindParam(':EMAIL', $dadoscad['EMAIL'], PDO::PARAM_STR);
     $salvar->bindParam(':CEP', $dadoscad['CEP'], PDO::PARAM_STR);
@@ -179,4 +175,9 @@ catch(PDOException $erro){
 
 }
 
+?>
+
+
+<?php
+require_once 'footer.php';
 ?>

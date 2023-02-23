@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    ob_start();
+
     require_once 'head.php';
     include_once 'conexao.php';
-
+    include_once 'menu.php';
 
 
     if(isset($_SESSION['msg'])){
@@ -19,10 +18,10 @@
 
     $inicio = ($limitereg * $pag) - $limitereg;
 
-    $busca= "SELECT id_produto,produto_nome,quantidade,tamanho,cor,custo,valor
-    Fornecedor_id_Fornecedor,Foto
-    FROM roupa,categoria  WHERE quantidade > 0 and
-    ID_CATEGORIA = ID_CATEGORIA
+    $busca= "SELECT roupa.ID_PRODUTO,roupa.PRODUTO_NOME,roupa.QUANTIDADE,roupa.TAMANHO,roupa.COR,roupa.CUSTO,roupa.VALOR,roupa.ID_FORNECEDOR,
+    roupa.FOTO,categoria.DESCRICAO
+    FROM roupa,categoria WHERE QUANTIDADE > 0 and
+    categoria.ID_CATEGORIA = roupa.ID_CATEGORIA
      LIMIT $inicio , $limitereg";
 
     $resultado = $conn->prepare($busca);
@@ -35,14 +34,16 @@
         <table class="table">
         <thead>
          <tr>
-            <th scope="col">Imagem</th>
+            <th scope="col">Foto</th>
             <th scope="col">Nome</th>
-            <th scope="col">valor</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Custo</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Cor</th>
             <th scope="col">Tamanho</th>
             <th scope="col">Categoria</th>
-          
+            <th scope="col"></th>
+            <th scope="col"></th>
 
          </tr>
         </thead>
@@ -55,20 +56,21 @@
         
 ?>        
             <tr>
-              <td scope="row"><img src="<?php echo $foto ?>"style=widht:100px;height:100px;></td>
-              <td><?php echo $PRODUTO_NOME ?></td>
-              <td><?php echo $CUSTO ?></td> 
-              <td><?php echo $VALOR ?></td><!--deveria ser valor?-->
+              <td scope="row"><img src="<?php echo $FOTO ?>"style=widht:100px;height:100px;></td>
+              <td><?php echo $PRODUTO_NOME?></td>
+              <td><?php echo $VALOR ?></td>
+              <td><?php echo $CUSTO ?></td>
               <td><?php echo $QUANTIDADE ?></td>
               <td><?php echo $COR ?></td>
               <td><?php echo $TAMANHO ?></td>
-              <td><?php echo $ID_CATEGORIA ?></td>
+            
+              <td><?php echo $DESCRICAO ?></td>
               <td>
-                 <?php echo "<a href='editarprod.php?codigo=$id_roupa'>" ; ?>
+                 <?php echo "<a href='editarprod.php?codigo=$ID_PRODUTO'>" ; ?>
                 <input type="submit" class="btn btn-primary" name="editar" value="Editar">
               </td>
               <td>
-                 <?php echo "<a href='excluirprod.php?codigo=$id_roupa'>" ; ?>
+                 <?php echo "<a href='excluirprod.php?codigo=$ID_PRODUTO'>" ; ?>
                  
                  <input type="submit" class="btn btn-danger" name="excluir" value="Excluir">
               </td>
@@ -104,12 +106,12 @@
       // Maximo de links      
       $maximo = 2;
 
-      echo "<a href='relaproduto.php?page=1'>Primeira</a> ";
+      echo "<a href='relproduto.php?page=1'>Primeira</a> ";
     // Chamar página anterior verificando a quantidade de páginas menos 1 e 
     // também verificando se já não é primeira página
     for ($anterior = $pag - $maximo; $anterior <= $pag - 1; $anterior++) {
         if ($anterior >= 1) {
-            echo "  <a href='relaproduto.php?page=$anterior'>$anterior</a> ";
+            echo "  <a href='relproduto.php?page=$anterior'>$anterior</a> ";
         }
     }
 
@@ -120,11 +122,17 @@
     // a ela
     for ($proxima = $pag + 1; $proxima <= $pag + $maximo; $proxima++) {
         if ($proxima <= $qnt_pagina) {
-            echo "<a href='relaproduto.php?page=$proxima'>$proxima</a> ";
+            echo "<a href='relproduto.php?page=$proxima'>$proxima</a> ";
         }
     }
 
-    echo "<a href='relaproduto.php?page=$qnt_pagina'>Última</a> ";
+    echo "<a href='relproduto.php?page=$qnt_pagina'>Última</a> ";
 
 
+?>
+
+
+
+<?php
+    require_once 'footer.php';
 ?>

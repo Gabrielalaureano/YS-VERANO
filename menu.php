@@ -1,3 +1,17 @@
+<?php
+    
+    session_start();
+    ob_start();
+
+    if(!isset($_SESSION["quant"])){
+      $_SESSION["quant"] = 0;
+    }
+
+?>
+
+
+
+
 <!--caebçalho-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.php">
@@ -23,7 +37,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="maio.php">Maiôs</a>
                 <a class="dropdown-item" href="biquini.php">Biquínis</a>
-                <a class="dropdown-item" href="diversos.php">Diverços</a>
+                <a class="dropdown-item" href="divercos.php">Diverços</a>
+              
         
               </div>
             </li>
@@ -34,31 +49,42 @@
             
            
           </form>
-           <!--area cart-->
-           <form class="form-inline my-2 my-lg-0">
-             <!-- Botão para acionar modal -->
-             <button type="button"   class="btn " data-toggle="modal" data-target="#login">
-             <i class="fa-solid fa-cart-shopping"></i>
-            </button>
-         
-          </form>
+
+  
+
+
+
          
            <!--area c-->
          <form class="form-inline my-2 my-lg-0">
              <!-- Botão para acionar modal -->
-             <button type="button" class="btn  " data-toggle="modal" data-target="#login">
-             <i class="fa-solid fa-user"></i>
+             <button type="button" class="btn" data-toggle="modal" data-target="#login">
+             <i class="fa-solid fa-user"> </i>
             </button>
+            <button type="button" class="btn" >
+            <a href="frmcarrinho.php">
+            <i class="fa-solid fa-cart-shopping"  >
+            <?php 
+              if($_SESSION["quant"]>0){
+                 echo $_SESSION["quant"]; 
+              }
+            ?>
          
+            </i>
+          </a>
+          </button>
+          
           </form>
         </div>
     </nav>
-    <!-- Modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+   <!-- Modal login -->
+   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center text-info" id="exampleModalLabel">Acesso ao Sistema</h5>
+        <h5 class="modal-title text-center text-info" id="exampleModalLabel">Acesso </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -70,7 +96,7 @@
             <div id="login-row" class="row justify-content-center">
                
                    
-                        <form id="login-form" class="form" action="" method="post">
+                        <form id="login-form" class="form" action="login.php" method="post">
                             
                             <div class="form-group">
                                 <label for="username" class="text-info">Nome de Usuário:</label><br>
@@ -81,9 +107,10 @@
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Lembrar</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-dark" value="Enviar">
-                                <input type="submit" name="submit" class="btn btn-info  btn-dark" value="Cadastre-se">
+                                <label for="remember-me" class="text-info"><span>Lembrar</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <a href="administrativo.php">  <button  class="btn btn-info btn-md" value="Enviar" name="btnlogin">Entrar</button></a>
+        
+                                <a href="frmcliente.php"><button type="button" name="cadastro" class="btn btn-info  btn-dark">Cadastre-se</button> </a>
                             </div>
                             
                         </form>

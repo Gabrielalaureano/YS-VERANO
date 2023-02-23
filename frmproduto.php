@@ -1,9 +1,9 @@
 <?php
+require_once 'menu.php';
     require_once 'head.php'; 
-    require_once 'menu.php';
     require_once 'conexao.php';
 
-    $sql = "SELECT * from categoria";
+    $sql = "SELECT fornecedor.ID_FORNECEDOR,fornecedor.NOMEF,categoria.ID_CATEGORIA,categoria.DESCRICAO  from fornecedor,categoria";
     $resultado=$conn->prepare($sql);
     $resultado->execute();
     
@@ -26,13 +26,14 @@
                     <input type="text" class="form-control" name="nome">    
                 </div>
             </div>   
-            
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="cor">Cor</label>
-                    <input type="text" class="form-control" name="cor">    
+                    <label for="quantidade">Quantidade</label>
+                    <input type="text" class="form-control" name="quantidade">    
                 </div>
-            </div>   
+            </div>  
+            
+           
             
             <div class="col-md-2">
                 <div class="form-group">
@@ -44,27 +45,30 @@
 
 <div class="row">
 
-            <div class="col-md-2">
+<div class="col-md-2">
                 <div class="form-group">
-                    <label for="quantidade">Quantidade</label>
-                    <input type="text" class="form-control" name="quantidade">    
+                    <label for="cor">Cor</label>
+                    <input type="text" class="form-control" name="cor">    
                 </div>
-            </div>  
+            </div>   
 
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="valor">Preço Compra</label>
+                    <label for="custo">Custo</label>
                     <input type="text" class="form-control" name="custo" onchange="this.value = this.value.replace(/,/g, '.')">    
                 </div>
             </div>  
-
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="valor">Preço Venda</label>
+                    <label for="valor">Valor</label>
                     <input type="text" class="form-control" name="valor" onchange="this.value = this.value.replace(/,/g, '.')">    
                 </div>
             </div>  
+</div>
 
+<div class="row">
+         
+   
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="categoria">Categoria</label>
@@ -89,40 +93,10 @@
                     </select>                    
                 </div>
             </div> 
-
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label for="fornecedor">Fornecedor</label>
-                    <select name="fornecedor" class="form-control">
-
-                        <?php
-
-                            $sql2 = "SELECT * from fornecedor";
-                            $resultado2=$conn->prepare($sql2);
-                            $resultado2->execute();
-
-
-                            if (($resultado2) and ($resultado2->rowCount() != 0)) { 
-                                while ($linha2 = $resultado2->fetch(PDO::FETCH_ASSOC)) {
-
-                                    extract($linha2);
-
-
-                        ?>
-                        <option value="<?php echo $ID_FORNECEDOR;?>"> <?php echo $NOME; ?> </option>
-                        
-                        <?php
-                                }
-                            }
-                            ?>
-
-                    </select>                    
-                </div>
-            </div> 
 </div>
 
 <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <div class="form-group">
                     <label for="foto">Imagem</label>
                     <input type="file" class="form-control" name="foto">    
@@ -131,10 +105,10 @@
 </div>
 
 <div class="row">
-            <div class="col-md-12 text-right">
+            <div class="col-md-4 text-right">
                 <div class="form-group">
                    
-                    <input type="submit" class="btn btn-primary" value="Enviar" name="btncad">
+                    <input type="submit" class="btn btn-dark" value="Enviar" name="btncad">
                 </div>  
             </div>
 

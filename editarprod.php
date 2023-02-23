@@ -2,18 +2,16 @@
 
    require_once 'head.php';
     include_once 'conexao.php';
-    session_start();
-    ob_start();
-
-    $cod = filter_input(INPUT_GET, "ID_PRODUTO", FILTER_SANITIZE_NUMBER_INT);
+  include_once 'menu.php';
+    $cod = filter_input(INPUT_GET, "codigo", FILTER_SANITIZE_NUMBER_INT);
 
     if (empty($cod)) {
         $_SESSION['msg'] = "Erro: Produto não encontrado!";
-        header("Location: relproduto.php");
+        header("Location: relaproduto.php");
         exit();
     }
 
-    $sql = "SELECT * from roupa where ID_produto = $cod LIMIT 1";
+    $sql = "SELECT * from roupa where ID_PRODUTO = $cod LIMIT 1";
     $resultado= $conn->prepare($sql);
     $resultado->execute();
 
@@ -24,7 +22,7 @@
     }
     else{
         $_SESSION['msg'] = "Erro: Produto não encontrado!";
-        header("Location: relproduto.php");
+        header("Location: relprodutos.php");
     }
 
 
@@ -49,17 +47,16 @@
 
             <div class="col-md-1">
                 <div class="form-group">
-                    <label for="codigo">Codigo</label>
-                    <input type="hidden" class="form-control" name="codigo"
-                    value="<?php echo $ID_PRODUTO;?>"
-                    >    
+                    <label for="codigo">ID</label>
+                    <input type="hidden" class="form-control" name="codigo" value="<?php echo $ID_PRODUTO;?>">
+                       
                 </div>
             </div>   
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" value="<?php echo $NOME;?>">    
+                    <input type="text" class="form-control" name="nome" value="<?php echo $PRODUTO_NOME;?>">    
                 </div>
             </div>           
 
@@ -78,13 +75,21 @@
                  </div>
             </div>
         </div>
+        <div class="col-md-3">
+              <div class="form-group">
+                 <label for="custo">custo</label>
+                 <input type="text" class="form-control" name="custo" onchange="this.value = this.value.replace(/,/g, '.')"/
+                 value="<?php echo $CUSTO;?>">  
+                 </div>
+            </div>
+        </div>
 
         <div class="row">
 
             <div class="col-md-2">        
               <div class="form-group">            
-                  <label for="dn">Tamanho</label>
-                  <input type="text" class="form-control" name="tamanho" value="<?php echo $TAMANHO;?>">
+                  <label for="tamanho">Tamanho</label>
+                  <input type="text" class="form-control" name="tamanho" value="<?php echo $TAMAMHO;?>">
               </div>
            </div>
              
@@ -103,7 +108,7 @@
                         <?php
 
                             $categoria = $ID_CATEGORIA;
-                            $sql = "SELECT * from CATEGORIA";
+                            $sql = "SELECT * from categoria";
                             $resultado= $conn->prepare($sql);
                             $resultado->execute();
 
@@ -116,14 +121,14 @@
                         <option value="<?php echo $ID_CATEGORIA; ?>"
                         
                         <?php
-                        if ($CATEGORIA == $ID_CATEGORIA)
+                        if ($categoria == $ID_CATEGORIA)
                             echo "selected";
                                 ?>                       
                         
                         >        
                         
                         
-                        <?php echo $DESCRICAO?></option>
+                        <?php echo $DESCRICAO ?></option>
                         <?php
                             }
                         }
@@ -160,5 +165,9 @@
 
 
 <?php
-    require_once 'rodape.php';
+    require_once 'footer.php';
 ?>
+
+
+
+

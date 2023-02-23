@@ -26,14 +26,6 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-              <div class="form-group">
-                 <label for="sexo">Sexo</label>
-                 <p><input type="radio" name="sexo" checked value="F"> Feminino           
-                  <input type="radio" name="sexo" value="M"> Masculino
-                 
-                </div>
-            </div>
 
             <div class="col-md-2">        
               <div class="form-group">            
@@ -52,12 +44,6 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="rg">RG</label>
-                    <input type="text" class="form-control" name="rg">
-                </div>
-            </div>
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -74,9 +60,11 @@
             <div class="col-md-2">            
                 <div class="form-group">
                     <label for="cep">CEP</label>
-                    <input type="text" name="cep" class="form-control" id="cep" onblur="pesquisacep(this.value);">                    
+                    <input type="text" name="cep" class="form-control" id="cep"  onblur="pesquisacep(this.value);">                    
                 </div>
             </div>
+
+            
 
             <div class="col-md-6">            
                 <div class="form-group">
@@ -95,10 +83,34 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="complemento">Complemento</label>
-                    <input type="text" value="CASA" class="form-control" name="complemento">
+                    <input type="text" value="CASA" class="form-control" name="COMPLEMENTO">
                 </div>
             </div>
         </div>
+        <div class="row">     
+
+            <div class="col-md-5">
+                <div class="form-group">
+                     <label for="bairro">Bairro</label><p>
+                        <input type="text" class="form-control" id="bairro" name="bairro">
+             </div>
+            </div>
+
+        <div class="col-md-5">
+                <div class="form-group">
+                    <label for="cidade">Cidade</label><p>
+                        <input type="text" class="form-control" id="cidade" name="cidade">
+             </div>
+        </div>
+
+        <div class="col-md-2  ">
+                <div class="form-group">
+                        <label for="uf">Estado</label><p>
+                            <input type="text" class="form-control" id="uf" name="uf">
+                </div>
+                    </div>
+            </div>
+
 
         
         <div class="row">   

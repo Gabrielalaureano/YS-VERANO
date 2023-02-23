@@ -31,14 +31,14 @@
       Para saber mais:
         • https://fontawesome.com/
     -->
+    <script src="Scripts\cep.js"></script>
     <script src="funcoes.js"></script>
     <script src="https://kit.fontawesome.com/6c3bbfdabc.js" crossorigin="anonymous"></script>
-<<<<<<< Updated upstream
-=======
     
     
->>>>>>> Stashed changes
-    <title>YS VERANO  </title>
+    
+    <title>YS VERANO</title>
+    <link rel="shortcut icon" href="img\logo1.png">
 </head>
 <body>
 

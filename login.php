@@ -1,4 +1,5 @@
 <?php
+require_once 'head.php';
         include_once 'conexao.php';
 
         session_start();
@@ -13,9 +14,9 @@ $dadoslogin = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (!empty($dadoslogin['btnlogin'])) {
 
-        $buscalogin = "SELECT matricula, nome, email,senha
-                                FROM aluno 
-                                WHERE email =:usuario  
+        $buscalogin = "SELECT ID_CLIENTE, NOME, EMAIL,SENHA
+                                FROM cliente 
+                                WHERE EMAIL =:usuario  
                                 LIMIT 1";
 
         $resultado= $conn->prepare($buscalogin);
@@ -30,12 +31,6 @@ if (!empty($dadoslogin['btnlogin'])) {
             if(password_verify($dadoslogin['senha'], $resposta['senha'])){
                 
                 $_SESSION['nome'] = $resposta['nome'];
-<<<<<<< Updated upstream
-                header("Location: administrativo.php");
-
-            }
-            else{
-=======
                 if( $_SESSION["carrinho"]==true){ $_SESSION['ID_CLIENTE'] = $resposta['ID_CLIENTE'];
                 
                 header("Location: frmcarrinho.php");
@@ -46,7 +41,6 @@ if (!empty($dadoslogin['btnlogin'])) {
 
     }
             else{
->>>>>>> Stashed changes
                 $_SESSION['msg'] = "Erro: Usuário ou senha inválida!";
           
             }

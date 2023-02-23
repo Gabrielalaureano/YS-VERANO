@@ -8,7 +8,7 @@
     $id = filter_input(INPUT_GET, "ID_CLIENTE", FILTER_SANITIZE_NUMBER_INT);
 
     if (empty($id)) {
-        $_SESSION['msg'] = "Erro: Aluno não encontrado!";
+        $_SESSION['msg'] = "Erro: Cliente não encontrado!";
         header("Location: relacliente.php");
         exit();
     }
@@ -43,7 +43,7 @@
 
             <div class="col-md-1">
                 <div class="form-group">
-                    <label for="ID_CLIENTE">ID_CLI</label>
+                    <label for="ID_CLIENTE">ID_CL</label>
                     <input type="text" class="form-control" name="ID_CLIENTE"
                     value="<?php echo $ID_CLIENTE;?>"
                     >    
@@ -68,8 +68,7 @@
                 </div>
             </div>
 
-    
-
+           
             <div class="col-md-2">        
               <div class="form-group">            
                   <label for="dn">Data de Nascimento</label>
@@ -85,14 +84,13 @@
             <div class="col-md-3">        
                 <div class="form-group">            
                     <label for="cpf">Cpf</label>
-                    <input type="text" name="cpf" class="form-control" onkeypress="$(this).mask('000.000.000-00');"
+                    <input type="text" name="CPF" class="form-control" onkeypress="$(this).mask('000.000.000-00');"
                     value="<?php echo $CPF;?>"                    
                     >
                 </div>
             </div>
 
-          
-            </div>
+        
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -111,7 +109,7 @@
             <div class="col-md-2">            
                 <div class="form-group">
                     <label for="cep">Cep</label>
-                    <input type="text" name="cep" class="form-control" id="cep" onblur="pesquisacep(this.value);"
+                    <input type="text" name="CEP" class="form-control" id="cep" onblur="pesquisacep(this.value);"
                     value="<?php echo $CEP;?>"                    
                     >                   
                 </div>
@@ -127,7 +125,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="numero">Número</label>
-                    <input type="text" class="form-control" name="numero"
+                    <input type="text" class="form-control" name="NUMERO"
                     value="<?php echo $NUMEROCASA;?>"                    
                     >    
                 </div>
@@ -136,7 +134,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="complemento">Complemento</label>
-                    <input type="text" class="form-control" name="complemento"
+                    <input type="text" class="form-control" name="COMPLEMENTO"
                     value="<?php echo $COMPLEMENTO;?>"                    
                     >
                 </div>
@@ -148,7 +146,7 @@
         <div class="col-md-5  ">
               <div class="form-group">
                  <label for="foto">Foto</label><p>
-                 <input type="file" class="form-control" name="foto">
+                 <input type="file" class="form-control" name="FOTO">
                 </div>
             </div>
 
