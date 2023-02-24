@@ -23,7 +23,11 @@ if(($resultado)and($resultado->RowCount()!=0)){
         <th scope="col">Nome</th>
         <th scope="col">Preço</th>
         <th scope="col">Quantidade</th>
-        <th scope="col">Total</th>       
+        <th scope="col">Tamanho</th>
+        <th scope="col">Total</th>    
+        <th scope="col"></th>  
+          
+
 
      </tr>
     </thead>
@@ -40,6 +44,7 @@ if(($resultado)and($resultado->RowCount()!=0)){
           <td><?php echo $NOME ?></td>
           <td><?php echo $VALOR ?></td>
           <td><?php echo $QUANTCOMPRA ?></td>
+          <td><?php echo $TAMANHO ?></td>
           <td><?php echo $total = $QUANTCOMPRA * $VALOR; 
           $totalcompra += $total; ?></td>
          
@@ -51,6 +56,18 @@ if(($resultado)and($resultado->RowCount()!=0)){
 
 <?php   
 } ?>
+
+
+
+
+
+
+
+
+
+
+
+
 <tr><td><?php echo "Total da Compra - R$ ".$totalcompra; ?></td></tr>
 </tbody>
 </table>

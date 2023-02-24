@@ -90,6 +90,10 @@ margin-top: 1rem;
    justify-content: center;
    align-items: center;
  }
+ /**dropdown categorias**/
+ .dropdown menu{
+   margin-right: 5%;
+ }
 
 /** index OUTLET**/
 

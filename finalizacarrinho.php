@@ -7,7 +7,7 @@
    
     if(isset($_POST["excluir"])){
 
-        $codigoproduto = $_POST["excluir"]; 
+        $CODIGOPRODUTO = $_POST["excluir"]; 
 
         $sqlexcluir = "DELETE from carrinho where CODIGOPRODUTO = $CODIGOPRODUTO";
         $resulexcluir=$conn->prepare($sqlexcluir);
@@ -17,21 +17,25 @@
         if(!isset($_SESSION['nome'])){
             $_SESSION["carrinho"] = true;
             echo "<script>
-            alert('Faça Login para Finalizar sua Compra!!!');
+            alert('Faça Login para Finalizar sua Compra!');
             parent.location = 'login.php';
             </script>";
         }
         else{
             //acessar pagamento;
-            $data = date('y-m-d');
-            $valor = $_SESSION['totalcompra'];            
-            $matricula = $_SESSION["cliente"];
+            $DATA = date('y-m-d');
+            $VALOR = $_SESSION['totalcompra'];            
+            $ID_CLIENTE = $_SESSION["cliente"];
           
-            $sqlvenda = "INSERT into venda(DATA,VALOR,ID_CLIENTE)values
-            (:DATA,:VALOR,:ID_CLIENTE)";
+            $sqlvenda = "INSERT into venda(ID_VENDA,DATA,VALOR,FORMA_PAGAMENTO,PARCELAS,ID_VENDEDOR,ID_CLIENTE)values
+            (:ID_VENDA,:DATA,:VALOR,:FORMA_PAGAMENTO,:PARCELAS,:ID_VENDEDOR,:ID_CLIENTE)";
             $salvarvenda= $conn->prepare($sqlvenda);
+            $salvarvenda->bindParam(':ID_VENDA', $ID_VENDA, PDO::PARAM_STR);
             $salvarvenda->bindParam(':DATA', $DATA, PDO::PARAM_STR);
             $salvarvenda->bindParam(':VALOR', $VALOR, PDO::PARAM_STR);
+            $salvarvenda->bindParam(':FORMA_PAGAMENTO', $FORMA_PAGAMENTO, PDO::PARAM_STR);
+            $salvarvenda->bindParam(':PARCELAS', $PARCELAS, PDO::PARAM_STR);
+            $salvarvenda->bindParam(':ID_VENDEDOR', $ID_VENDEDOR, PDO::PARAM_STR);
             $salvarvenda->bindParam(':ID_CLIENTE',$ID_CLIENTE , PDO::PARAM_STR);        
             $salvarvenda->execute();
 
@@ -52,12 +56,14 @@
                 extract($linha);
                 
 
-               $sqlitem = "INSERT into roupa and venda_roupa(roupa.ID_PRODUTO,venda_roupa.ID_VENDA,roupa.QUANTIDADE,roupa.VALOR)
-                values(:ID_PRODUTO,:ID_VENDA,:QUANTIDADE,:VALOR)";
+               $sqlitem = "INSERT into roupa (ID_PRODUTO,PRODUTO_NOME,QUANTIDADE,TAMANHO,COR,VALOR)
+                values(:ID_PRODUTO,:PRODUTO_NOME,:QUANTIDADE,:TAMANHO,:COR,:VALOR)";
                 $salvaritem= $conn->prepare($sqlitem);
                 $salvaritem->bindParam(':ID_PRODUTO', $ID_PRODUTO, PDO::PARAM_INT);
-                $salvaritem->bindParam(':ID_VENDA', $ID_VENDA, PDO::PARAM_INT);
+                $salvaritem->bindParam(':PRODUTO_NOME',$PRODUTO_NOME, PDO::PARAM_INT);
                 $salvaritem->bindParam(':QUANTIDADE', $QUANTIDADE, PDO::PARAM_INT);
+                $salvaritem->bindParam(':TAMANHO', $TAMANHO, PDO::PARAM_INT);
+                $salvaritem->bindParam(':COR', $COR, PDO::PARAM_INT);
                 $salvaritem->bindParam(':VALOR', $VALOR, PDO::PARAM_STR);
                 $salvaritem->execute();
 
